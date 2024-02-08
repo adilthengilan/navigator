@@ -13,9 +13,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final ScreenWidth = MediaQuery.of(context).size.width;
     return MaterialApp(
-        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        title: 'Navigator Portal',
         theme: ThemeData(
-  
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
