@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navigator_portal/model/widgets/contants.dart';
+import 'package:navigator_portal/model/widgets/constantss.dart';
 
 class DesktopView extends StatefulWidget {
   const DesktopView({super.key});

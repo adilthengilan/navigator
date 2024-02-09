@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navigator_portal/model/widgets/contants.dart';
+import 'package:navigator_portal/model/widgets/constantss.dart';
 import 'package:navigator_portal/view/home_page.dart';
 import 'package:navigator_portal/view/mobile_view/registration_page/widgets.dart';
 
