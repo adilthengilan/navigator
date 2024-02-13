@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navigator_portal/view/home_page.dart';
-
+import 'package:get/get.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -11,8 +11,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final ScreenWidth = MediaQuery.of(context).size.width;
-    return MaterialApp(
+    return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Navigator Portal',
         theme: ThemeData(
