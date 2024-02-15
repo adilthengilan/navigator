@@ -24,7 +24,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.example.navigator_portal"
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 30
     ndkVersion flutter.ndkVersion
 
     compileOptions {
