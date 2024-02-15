@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:navigator_portal/view/desktop_view/home_page.dart';
 
 class MVHomePage extends StatefulWidget {
   const MVHomePage({super.key});
