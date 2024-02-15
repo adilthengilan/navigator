@@ -14,7 +14,8 @@ class _MVHomePageState extends State<MVHomePage> {
       body: Column(
         children: [
           Container(
-            height: 75,width: double.infinity,
+            height: 75,
+            width: double.infinity,
             decoration: BoxDecoration(
               color: Colors.white,
               boxShadow: [
@@ -28,11 +29,16 @@ class _MVHomePageState extends State<MVHomePage> {
             ),
             child: Row(
               children: [
-                Image.asset("assets/images/logobluetext.png",scale: 5,),
+                Image.asset(
+                  "assets/images/logobluetext.png",
+                  scale: 5,
+                ),
                 Padding(
-                  padding:  EdgeInsets.only(left: MediaQuery.of(context).size.width/2
+                  padding: EdgeInsets.only(
+                      left: MediaQuery.of(context).size.width / 2),
+                  child: CircleAvatar(
+                    backgroundColor: Colors.black,
                   ),
-                  child: CircleAvatar(backgroundColor: Colors.black,),
                 )
               ],
             ),
@@ -40,13 +46,103 @@ class _MVHomePageState extends State<MVHomePage> {
           Row(
             children: [
               Padding(
-                padding:  EdgeInsets.only(top: MediaQuery.of(context).size.height/20,left: MediaQuery.of(context).size.width/20),
-                child: Text("Summary",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22),),
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height / 20,
+                    left: MediaQuery.of(context).size.width / 20),
+                child: Text(
+                  "Summary",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                ),
               ),
             ],
-          )
-          ],
+          ),
+          
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _showDialog(context);
+        },
+        tooltip: 'Add Student',
+        child: Icon(Icons.add),
       ),
     );
   }
+}
+
+//show dialogue
+void _showDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Student Detailes'),
+        content: Column(children: [
+          TextField(
+            decoration: InputDecoration(
+              labelText: "Student Name",
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          TextField(
+            decoration: InputDecoration(
+              labelText: "Location(optional)",
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          TextField(
+            decoration: InputDecoration(
+              labelText: "Looking Course",
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          TextField(
+            decoration: InputDecoration(
+              labelText: "College(optional)",
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+            ),
+          ),
+          SizedBox(
+            height: 15,
+          ),
+          TextField(
+            decoration: InputDecoration(
+              labelText: "Phone Number",
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
+            ),
+          ),
+        ]),
+        actions: [
+          TextButton(
+            onPressed: () {
+              // Close the dialog
+              Navigator.of(context).pop();
+            },
+            child: Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () {
+              // Close the dialog
+              Navigator.of(context).pop();
+            },
+            child: Text('Submit'),
+          ),
+        ],
+      );
+    },
+  );
 }
