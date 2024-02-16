@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:navigator_portal/controller/indexController/indexController.dart';
-import 'package:navigator_portal/model/widgets/constantss.dart';
+import 'package:navigator_portal/model/widgets/constant.dart';
 
 class TabView extends StatefulWidget {
   const TabView({super.key});
