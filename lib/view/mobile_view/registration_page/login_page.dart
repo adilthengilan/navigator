@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:navigator_portal/model/widgets/constant.dart';
 import 'package:navigator_portal/view/home_page.dart';
 import 'package:navigator_portal/view/mobile_view/registration_page/widgets.dart';
+import 'package:navigator_portal/view/mobile_view/dashBoard/mv_home_page.dart';
 
 class Login_Page extends StatefulWidget {
   const Login_Page({super.key});
@@ -19,13 +20,10 @@ class _Login_PageState extends State<Login_Page> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          sizedBox(30, 0),
+          sizedBox(50, 0),
           Container(
-            height: 300,
-            width: 300,
-            color: Colors.blue,
-          ),
-          sizedBox(20, 0),
+              height: 200, child: Image.asset("assets/images/logoSplash.png")),
+          sizedBox(40, 0),
           Padding(
             padding: EdgeInsets.only(left: 30, right: 30),
             child: TextField(
@@ -71,10 +69,10 @@ class _Login_PageState extends State<Login_Page> {
 
   void login() {
     if (username.text.isNotEmpty || password.text.isNotEmpty) {
-      Navigator.push(
+      Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => HomePage(),
+            builder: (context) => MVHomePage(),
           ));
     } else {
       snackBar(
