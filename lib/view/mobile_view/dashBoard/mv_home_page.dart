@@ -50,13 +50,33 @@ class _MVHomePageState extends State<MVHomePage> {
                     top: MediaQuery.of(context).size.height / 20,
                     left: MediaQuery.of(context).size.width / 20),
                 child: Text(
-                  "Summary",
+                  "Your Summary,",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
                 ),
               ),
             ],
           ),
-          
+           SizedBox(
+            height: 15,
+          ),
+          Container(height: 100,width: 220,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: Offset(0, 3),
+                ),
+              ],
+            
+            ),
+          ),
+          SizedBox(
+                      width: 20,
+                    )
+
         ],
       ),
       floatingActionButton: FloatingActionButton(
