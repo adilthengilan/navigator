@@ -4,8 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:navigator_portal/controller/indexController/indexController.dart';
 import 'package:navigator_portal/model/widgets/colors.dart';
 import 'package:navigator_portal/model/widgets/constant.dart';
+import 'package:navigator_portal/view/desktop_view/agentProviders/addStudentsDetails.dart';
 import 'package:navigator_portal/view/desktop_view/contacts/contact.dart';
 import 'package:navigator_portal/view/desktop_view/home/desktop_homes.dart';
+import 'package:navigator_portal/view/mobile_view/registration_page/login_page.dart';
 
 class DesktopView extends StatefulWidget {
   const DesktopView({super.key});
@@ -20,7 +22,7 @@ class _HomePageState extends State<DesktopView> {
   @override
   Widget build(BuildContext context) {
     final Indexes indexes = Get.put(Indexes()); // Instantiate CounterController
-
+    bool verify = false;
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -38,19 +40,36 @@ class _HomePageState extends State<DesktopView> {
           actions: [
             SizedBox(height: 30, child: AppBarButtons()),
             sizedBox(0, width * 0.10),
-            Container(
-              height: 40,
-              width: width * 0.1,
-              decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 91, 67, 129),
-                  borderRadius: BorderRadius.circular(30)),
+            InkWell(
+              onTap: () {
+                // showDialogueForProviders(context, verify);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => StudentsAdding(),
+                    ));
+              },
+              child: Container(
+                height: 40,
+                width: width * 0.1,
+                decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 91, 67, 129),
+                    borderRadius: BorderRadius.circular(30)),
+                child: Center(
+                  child: Text(
+                    'Providers',
+                    style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w500, color: Colors.white),
+                  ),
+                ),
+              ),
             ),
             sizedBox(0, width * 0.05),
             IconButton(
                 onPressed: () {},
                 icon: Icon(
                   Icons.search_rounded,
-                  color: Colors.green.shade400,
+                  color: Color.fromARGB(255, 91, 67, 129),
                 ))
           ]),
       body: SingleChildScrollView(
@@ -92,7 +111,7 @@ class _HomePageState extends State<DesktopView> {
     final Indexes indexes =
         Get.find<Indexes>(); // Instantiate CounterController
 
-    List<String> buttons = ['Home', 'About', 'Service', 'Blog', 'Contact'];
+    List<String> buttons = ['Home', 'Courses', 'Blog', 'Contact'];
 
     return ListView.builder(
       shrinkWrap: true,
@@ -106,14 +125,14 @@ class _HomePageState extends State<DesktopView> {
                 case 0:
                   _scrollToPosition(0);
                 case 1:
-                  _scrollToPosition(400);
+                  _scrollToPosition(800);
                 case 2:
                   _scrollToPosition(800);
 
                 case 3:
                   _scrollToPosition(1200);
                 case 4:
-                  _scrollToPosition(1600);
+                  _scrollToPosition(2000);
               }
             },
             child: Obx(
@@ -136,6 +155,70 @@ class _HomePageState extends State<DesktopView> {
       position,
       duration: Duration(seconds: 1),
       curve: Curves.easeInOut,
+    );
+  }
+
+  void verifyDetails(NameController, IdController, bool verify) {
+    if (NameController.text.isNotEmpty && IdController.text.isNotEmpty) {
+      if (NameController.text == ClientName && IdController.text == ClientId) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => StudentsAdding(),
+            ));
+      } else {}
+    }
+  }
+
+  void showDialogueForProviders(BuildContext context, bool verify) {
+    final TextEditingController NameController = TextEditingController();
+    final TextEditingController IdController = TextEditingController();
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(
+            'Please Login With Your Client name and id',
+            style:
+                GoogleFonts.poppins(fontWeight: FontWeight.w600, fontSize: 15),
+          ),
+          content: SizedBox(
+            height: 200,
+            child: Column(
+              children: [
+                TextField(
+                  controller: NameController,
+                  decoration: InputDecoration(
+                    hintText: 'Enter client name',
+                  ),
+                ),
+                sizedBox(20, 0),
+                TextField(
+                    controller: IdController,
+                    decoration: InputDecoration(
+                      hintText: 'Enter client id',
+                    )),
+                sizedBox(20, 0),
+                TextButton(
+                  onPressed: () {
+                    verifyDetails(NameController, IdController, verify);
+                  },
+                  child: Text(
+                    'Submit',
+                    style: GoogleFonts.poppins(
+                        color: Colors.white, fontWeight: FontWeight.w500),
+                  ),
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStatePropertyAll(Colors.blue),
+                      shape: MaterialStatePropertyAll(ContinuousRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)))),
+                )
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

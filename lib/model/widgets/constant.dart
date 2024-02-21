@@ -15,3 +15,6 @@ Widget sizedBox(double height, double width) {
     width: width,
   );
 }
+
+final ClientName = 'NavigatorAdmin';
+final ClientId = 'NavigatorAdmin123';
