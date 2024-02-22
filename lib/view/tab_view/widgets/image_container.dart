@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-Widget Image_Container_for_DesktopView(height) {
+Widget Image_Container_for_tabview(height) {
   return Container(
     margin: EdgeInsets.only(top: 20),
-    height: height * 0.60,
-    width: height * 0.60,
+    height: height * 0.40,
+    width: height * 0.40,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(30),
       gradient: RadialGradient(colors: [
@@ -16,8 +16,8 @@ Widget Image_Container_for_DesktopView(height) {
       children: [
         Center(
           child: Container(
-            height: height * 0.6,
-            width: height * 0.6,
+            height: height * 0.4,
+            width: height * 0.4,
             decoration: BoxDecoration(
                 gradient: RadialGradient(colors: [
                   Color.fromARGB(255, 168, 177, 255),
@@ -29,8 +29,8 @@ Widget Image_Container_for_DesktopView(height) {
         ),
         Center(
           child: Container(
-            height: height * 0.30,
-            width: height * 0.30,
+            height: height * 0.20,
+            width: height * 0.20,
             decoration: BoxDecoration(
               gradient: RadialGradient(colors: [
                 Color.fromARGB(255, 168, 177, 255),
@@ -42,8 +42,8 @@ Widget Image_Container_for_DesktopView(height) {
         ),
         Center(
           child: Container(
-            height: height * 0.4,
-            width: height * 0.4,
+            height: height * 0.2,
+            width: height * 0.2,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(height * 0.25),
                 border: Border.all(color: Colors.white)),
@@ -51,7 +51,7 @@ Widget Image_Container_for_DesktopView(height) {
         ),
         SizedBox(
           width: double.infinity,
-          height: height * 0.50,
+          height: height * 0.40,
           child: Image(image: AssetImage('assets/images/student image.png')),
         )
       ],

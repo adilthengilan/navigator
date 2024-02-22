@@ -82,7 +82,7 @@ class _HomeState extends State<Home> {
                       ))
                 ],
               ),
-              ImageContainer(widget.height)
+              Image_Container_for_DesktopView(widget.height)
             ],
           ),
         ),

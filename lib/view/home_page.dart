@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:navigator_portal/view/desktop_view/desktop_navigation.dart';
 import 'package:navigator_portal/view/mobile_view/mobile_home.dart';
 import 'package:navigator_portal/view/responsive_layout.dart';
-import 'package:navigator_portal/view/tab_view/tab_home.dart';
+import 'package:navigator_portal/view/tab_view/home/tab_home.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
