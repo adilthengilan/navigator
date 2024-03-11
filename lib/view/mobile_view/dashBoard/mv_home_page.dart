@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:navigator_portal/controller/indexController/indexController.dart';
+import 'package:navigator_portal/view/mobile_view/dashBoard/Widgets/Drawer/navigation_drawer.dart';
 
 class MVHomePage extends StatefulWidget {
   const MVHomePage({super.key});
@@ -10,159 +14,29 @@ class MVHomePage extends StatefulWidget {
 class _MVHomePageState extends State<MVHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          Container(
-            height: 75,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
-                  offset: Offset(0, 3),
-                ),
-              ],
-            ),
-            child: Row(
-              children: [
-                Image.asset(
-                  "assets/images/logobluetext.png",
-                  scale: 5,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                      left: MediaQuery.of(context).size.width / 2),
-                  child: CircleAvatar(
-                    backgroundColor: Colors.black,
-                  ),
-                )
-              ],
-            ),
-          ),
-          Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height / 20,
-                    left: MediaQuery.of(context).size.width / 20),
-                child: Text(
-                  "Your Summary,",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-                ),
-              ),
-            ],
-          ),
-           SizedBox(
-            height: 15,
-          ),
-          Container(height: 100,width: 220,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
-                  offset: Offset(0, 3),
-                ),
-              ],
-            
-            ),
-          ),
-          SizedBox(
-                      width: 20,
-                    )
+    final Indexes indexes = Get.put(Indexes()); // Instantiate CounterController
 
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        leading: Image(image: AssetImage("assets/images/logobluetext.png")),
+        leadingWidth: 150,
+        actions: [
+          Builder(builder: (context) {
+            return IconButton(
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                icon: Icon(Icons.menu));
+          })
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _showDialog(context);
-        },
-        tooltip: 'Add Student',
-        child: Icon(Icons.add),
+      drawer: MvDrawer(width: width, height: height),
+      body: Column(
+        children: [],
       ),
     );
   }
-}
-
-//show dialogue
-void _showDialog(BuildContext context) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text('Student Detailes'),
-        content: Column(children: [
-          TextField(
-            decoration: InputDecoration(
-              labelText: "Student Name",
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-            ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          TextField(
-            decoration: InputDecoration(
-              labelText: "Location(optional)",
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-            ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          TextField(
-            decoration: InputDecoration(
-              labelText: "Looking Course",
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-            ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          TextField(
-            decoration: InputDecoration(
-              labelText: "College(optional)",
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-            ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          TextField(
-            decoration: InputDecoration(
-              labelText: "Phone Number",
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-            ),
-          ),
-        ]),
-        actions: [
-          TextButton(
-            onPressed: () {
-              // Close the dialog
-              Navigator.of(context).pop();
-            },
-            child: Text('Cancel'),
-          ),
-          TextButton(
-            onPressed: () {
-              // Close the dialog
-              Navigator.of(context).pop();
-            },
-            child: Text('Submit'),
-          ),
-        ],
-      );
-    },
-  );
 }
