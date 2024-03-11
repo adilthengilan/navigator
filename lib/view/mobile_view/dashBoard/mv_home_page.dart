@@ -1,168 +1,105 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:navigator_portal/model/widgets/colors.dart';
+import 'package:navigator_portal/model/widgets/constant.dart';
+import 'package:navigator_portal/view/mobile_view/widgets/image_container.dart';
 
-class MVHomePage extends StatefulWidget {
-  const MVHomePage({super.key});
+class Mobile_View_Home extends StatefulWidget {
+  const Mobile_View_Home({super.key});
 
   @override
-  State<MVHomePage> createState() => _MVHomePageState();
+  State<Mobile_View_Home> createState() => _Mobile_View_HomeState();
 }
 
-class _MVHomePageState extends State<MVHomePage> {
+class _Mobile_View_HomeState extends State<Mobile_View_Home> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.height;
+
+    return Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              colors: [bgColor1, bgColor2],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight)),
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: Image.asset('assets/images/Logo.png'),
+        ),
+        drawer: Drawer(
+            child: ListView(
+          children: [],
+        )),
+        backgroundColor: Colors.transparent,
+        body: Stack(children: [
           Container(
-            height: 75,
+            height: height / 2,
             width: double.infinity,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
-                  offset: Offset(0, 3),
-                ),
-              ],
-            ),
-            child: Row(
-              children: [
-                Image.asset(
-                  "assets/images/logobluetext.png",
-                  scale: 5,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(
-                      left: MediaQuery.of(context).size.width / 2),
-                  child: CircleAvatar(
-                    backgroundColor: Colors.black,
-                  ),
-                )
-              ],
-            ),
+            color: Color.fromARGB(18, 255, 255, 255),
           ),
-          Row(
+          Column(
             children: [
-              Padding(
-                padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height / 20,
-                    left: MediaQuery.of(context).size.width / 20),
-                child: Text(
-                  "Your Summary,",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                physics: NeverScrollableScrollPhysics(),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    sizedBox(0, width / 4),
+                    CircleAvatar(
+                      maxRadius: height / 2.5,
+                      backgroundColor: Color.fromARGB(99, 255, 255, 255),
+                    )
+                  ],
                 ),
-              ),
+              )
             ],
           ),
-           SizedBox(
-            height: 15,
-          ),
-          Container(height: 100,width: 220,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
-                  offset: Offset(0, 3),
-                ),
-              ],
-            
+          Padding(
+            padding: EdgeInsets.only(top: 10, left: width * 0.1),
+            child: CircleAvatar(
+              backgroundColor: Colors.transparent,
+              radius: height / 4,
+              child: Image.asset('assets/images/student image.png'),
             ),
-          ),
-          SizedBox(
-                      width: 20,
-                    )
-
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _showDialog(context);
-        },
-        tooltip: 'Add Student',
-        child: Icon(Icons.add),
+          )
+        ]),
       ),
     );
   }
 }
 
-//show dialogue
-void _showDialog(BuildContext context) {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text('Student Detailes'),
-        content: Column(children: [
-          TextField(
-            decoration: InputDecoration(
-              labelText: "Student Name",
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-            ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          TextField(
-            decoration: InputDecoration(
-              labelText: "Location(optional)",
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-            ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          TextField(
-            decoration: InputDecoration(
-              labelText: "Looking Course",
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-            ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          TextField(
-            decoration: InputDecoration(
-              labelText: "College(optional)",
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-            ),
-          ),
-          SizedBox(
-            height: 15,
-          ),
-          TextField(
-            decoration: InputDecoration(
-              labelText: "Phone Number",
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(15)),
-            ),
-          ),
-        ]),
-        actions: [
-          TextButton(
-            onPressed: () {
-              // Close the dialog
-              Navigator.of(context).pop();
-            },
-            child: Text('Cancel'),
-          ),
-          TextButton(
-            onPressed: () {
-              // Close the dialog
-              Navigator.of(context).pop();
-            },
-            child: Text('Submit'),
-          ),
-        ],
-      );
-    },
+Widget MV_AppBarContainer() {
+  return Container(
+    height: 50,
+    child: Row(
+      children: [
+        TextButton(
+            onPressed: () {},
+            child: Text(
+              'Home',
+              style: style,
+            )),
+        TextButton(
+            onPressed: () {},
+            child: Text(
+              'Home',
+              style: style,
+            )),
+        TextButton(
+            onPressed: () {},
+            child: Text(
+              'Home',
+              style: style,
+            ))
+      ],
+    ),
   );
 }
+
+final style =
+    GoogleFonts.poppins(color: Colors.black, fontWeight: FontWeight.w500);

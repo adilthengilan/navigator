@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navigator_portal/view/mobile_view/dashBoard/mv_home_page.dart';
 import 'package:navigator_portal/view/mobile_view/registration_page/login_page.dart';
 
 class MobileView extends StatefulWidget {
@@ -12,7 +13,7 @@ class _HomePageState extends State<MobileView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Login_Page(),
+      body: Mobile_View_Home(),
     );
   }
 }

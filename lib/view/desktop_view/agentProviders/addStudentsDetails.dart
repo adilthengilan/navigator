@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:navigator_portal/model/widgets/constant.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class StudentsAdding extends StatefulWidget {
   const StudentsAdding({super.key});
@@ -180,4 +181,16 @@ class StudentsDetails extends StatelessWidget {
       },
     );
   }
+}
+
+void createFieldinFirebase() async {
+  final collection = FirebaseFirestore.instance.collection('StudentsDetails');
+  collection.doc().set({
+    'Name': [
+      {
+        'Course': 'Bca',
+        'Number': 'Number',
+      }
+    ]
+  });
 }
