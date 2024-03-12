@@ -120,8 +120,8 @@ class _HomePageState extends State<TabView> {
                               padding:
                                   EdgeInsets.only(left: width * 0.15, top: 10),
                               child: Container(
-                                height: height * 0.06,
-                                width: width * 0.15,
+                                height: height / 18,
+                                width: width / 5,
                                 decoration: BoxDecoration(
                                     color: Color.fromARGB(255, 91, 67, 129),
                                     borderRadius: BorderRadius.circular(25)),
@@ -129,15 +129,13 @@ class _HomePageState extends State<TabView> {
                                   child: Text(
                                     'Learn More...',
                                     style: GoogleFonts.poppins(
-                                        color: Colors.white, fontSize: 15),
+                                        color: Colors.white,
+                                        fontSize: width * 0.020),
                                   ),
                                 ),
                               ))
                         ],
-                      ), /////////////////////////////////////////////////////////////
-                      ///////////////////////////////////////////////////////
-                      //////////////////////////////////////////
-                      ///
+                      ),
                       Image_Container_for_tabview(height)
                     ],
                   ),

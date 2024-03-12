@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:navigator_portal/model/widgets/constant.dart';
-
+import 'package:firebase_core/firebase_core.dart';
 class Contact extends StatefulWidget {
   const Contact({super.key});
 
@@ -17,51 +17,31 @@ class _ContactState extends State<Contact> {
     final textstyle = GoogleFonts.roboto(
         color: Colors.blueGrey, fontSize: 18, fontWeight: FontWeight.w400);
     return Container(
-      height: height * 0.6,
-      width: double.infinity,
       color: Colors.white,
+      width: double.infinity,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
+              sizedBox(0, width * 0.01),
               Container(
                 height: height * 0.4,
-                width: width * 0.2,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/Logo.png'),
-                        fit: BoxFit.fill)),
+                child: Image.asset('assets/images/Logo.png'),
               ),
-              sizedBox(0, width * 0.20),
+              sizedBox(0, width * 0.1),
               Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Contact Us',
-                    style: GoogleFonts.poppins(
-                        fontSize: 25, fontWeight: FontWeight.w700),
-                  ),
-                  sizedBox(20, 0),
-                  Text(
-                    'Phone: +91 8593872030',
-                    style: textstyle,
-                  ),
-                  sizedBox(10, 0),
-                  Text(
-                    'Email : navigatrr@gmail.com',
-                    style: textstyle,
-                  ),
+                  Text('Contact Us'),
                 ],
               ),
-              Text(
-                'Follow Us',
-                style: GoogleFonts.poppins(
-                    fontSize: 25, fontWeight: FontWeight.w700),
+              sizedBox(0, width * 0.1),
+              Container(
+                height: 100,
+                width: 100,
+                color: Colors.yellow,
               )
             ],
-          )
+          ),
         ],
       ),
     );

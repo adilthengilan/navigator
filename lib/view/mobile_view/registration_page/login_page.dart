@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:navigator_portal/model/widgets/constant.dart';
-import 'package:navigator_portal/view/home_page.dart';
-import 'package:navigator_portal/view/mobile_view/registration_page/widgets.dart';
 import 'package:navigator_portal/view/mobile_view/dashBoard/mv_home_page.dart';
 
 class Login_Page extends StatefulWidget {
@@ -71,11 +69,11 @@ class _Login_PageState extends State<Login_Page> {
 
   void login() {
     if (username.text.isNotEmpty || password.text.isNotEmpty) {
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => MVHomePage(),
-          ));
+      // Navigator.pushReplacement(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (context) => MVHomePage(),
+      //     ));
     } else {
       snackBar(
         context,
