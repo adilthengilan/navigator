@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:navigator_portal/view/mobile_view/dashBoard/mv_home_page.dart';
-import 'package:navigator_portal/view/mobile_view/registration_page/login_page.dart';
 
 class MobileView extends StatefulWidget {
   const MobileView({super.key});
