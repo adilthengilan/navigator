@@ -3,9 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:navigator_portal/model/widgets/constant.dart';
 import 'package:navigator_portal/model/widgets/texts.dart';
 import 'package:navigator_portal/view/desktop_view/home/desktop_homes.dart';
-import 'package:navigator_portal/view/desktop_view/home/image_widgets.dart';
+import 'package:navigator_portal/view/mobile_view/Contact/contact.dart';
+import 'package:navigator_portal/view/mobile_view/Course/course_screen.dart';
 import 'package:navigator_portal/view/mobile_view/Home/home_image.dart';
-import 'package:navigator_portal/view/tab_view/widgets/image_container.dart';
 
 class MvHomeScreen extends StatefulWidget {
   final double width;
@@ -52,7 +52,7 @@ class _MvHomeState extends State<MvHome> {
       children: [
         sizedBox(60, 0),
         Padding(
-          padding: const EdgeInsets.only(left: 20,right: 60),
+          padding: const EdgeInsets.only(left: 20, right: 60),
           child: SizedBox(
             child: Text(
               HomeHeadingText,
@@ -86,7 +86,9 @@ class _MvHomeState extends State<MvHome> {
             height: 40,
             width: 120,
             decoration: BoxDecoration(
-                color: Colors.blue, borderRadius: BorderRadius.circular(25)),
+              color: Colors.blue,
+              borderRadius: BorderRadius.circular(25),
+            ),
             child: Center(
               child: Text(
                 'Learn More...',
@@ -99,6 +101,7 @@ class _MvHomeState extends State<MvHome> {
         Image_Container_for_MobileView(widget.height),
         sizedBox(50, 0),
         Container(
+          // Curved Behavior Box
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
@@ -122,16 +125,9 @@ class _MvHomeState extends State<MvHome> {
                 child: Universities(),
               ),
               sizedBox(50, 0),
-              Text(
-                HomeSubHeading2,
-                style: GoogleFonts.poppins(
-                    fontSize: 24, fontWeight: FontWeight.w700),
-              ),
-              sizedBox(100, 0),
-              // // SizedBox(height: widget.height * 0.7, child: Cources()),
-              // sizedBox(widget.height * 0.05, 0)
+              MvCourse(),
+              sizedBox(80, 0)
             ],
-            
           ),
         ),
       ],
