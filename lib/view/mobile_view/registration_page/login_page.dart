@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:navigator_portal/model/widgets/constant.dart';
-import 'package:navigator_portal/view/mobile_view/dashBoard/mv_home_page.dart';
 
 class Login_Page extends StatefulWidget {
   const Login_Page({super.key});
@@ -19,7 +18,7 @@ class _Login_PageState extends State<Login_Page> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           sizedBox(50, 0),
-          Container(
+          SizedBox(
               height: 200, child: Image.asset("assets/images/logoSplash.png")),
           sizedBox(40, 0),
           Padding(
