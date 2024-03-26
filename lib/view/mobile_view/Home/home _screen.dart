@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:navigator_portal/model/widgets/constant.dart';
 import 'package:navigator_portal/model/widgets/texts.dart';
 import 'package:navigator_portal/view/desktop_view/home/desktop_homes.dart';
-import 'package:navigator_portal/view/mobile_view/Contact/contact.dart';
 import 'package:navigator_portal/view/mobile_view/Course/course_screen.dart';
 import 'package:navigator_portal/view/mobile_view/Home/home_image.dart';
 
@@ -51,36 +50,33 @@ class _MvHomeState extends State<MvHome> {
     return Column(
       children: [
         sizedBox(60, 0),
-        Padding(
-          padding: const EdgeInsets.only(left: 20, right: 60),
-          child: SizedBox(
-            child: Text(
-              HomeHeadingText,
-              textAlign: TextAlign.start,
-              style: GoogleFonts.poppins(
-                fontSize: 26,
-                color: const Color.fromARGB(255, 0, 0, 0),
-                fontWeight: FontWeight.w700,
+        Container(
+          margin: EdgeInsets.only(left: widget.width / 15,right: widget.width / 10),
+          child: Column(
+            children: [
+              Text(
+                HomeHeadingText,
+                textAlign: TextAlign.start,
+                style: GoogleFonts.poppins(
+                  fontSize: 32,
+                  color:  Colors.black,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
-            ),
+              sizedBox(15, 0),
+              Text(
+                HomeSubHeadingText,
+                textAlign: TextAlign.start,
+                style: GoogleFonts.poppins(
+                  fontSize: 20,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
           ),
         ),
-        sizedBox(15, 0),
-        Padding(
-          padding: const EdgeInsets.only(left: 20, right: 15),
-          child: SizedBox(
-            child: Text(
-              HomeSubHeadingText,
-              textAlign: TextAlign.start,
-              style: GoogleFonts.poppins(
-                fontSize: 16,
-                color: const Color.fromARGB(255, 0, 0, 0),
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-        ),
-        sizedBox(40, 0),
+        sizedBox(80, 0),
         Center(
           child: Container(
             height: 40,
@@ -97,9 +93,9 @@ class _MvHomeState extends State<MvHome> {
             ),
           ),
         ),
-        sizedBox(50, 0),
+        sizedBox(80, 0),
         Image_Container_for_MobileView(widget.height),
-        sizedBox(50, 0),
+        sizedBox(80, 0),
         Container(
           // Curved Behavior Box
           width: double.infinity,
@@ -118,14 +114,14 @@ class _MvHomeState extends State<MvHome> {
                 style: GoogleFonts.poppins(
                     fontSize: 22, fontWeight: FontWeight.w700),
               ),
-              sizedBox(50, 0),
+              sizedBox(80, 0),
               SizedBox(
                 height: widget.height * 0.09,
                 width: double.infinity,
                 child: Universities(),
               ),
-              sizedBox(50, 0),
-              MvCourse(),
+              sizedBox(80, 0),
+              MvCourse(height: widget.height, width: widget.width),
               sizedBox(80, 0)
             ],
           ),

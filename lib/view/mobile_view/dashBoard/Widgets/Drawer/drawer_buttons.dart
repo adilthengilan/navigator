@@ -29,20 +29,24 @@ class DrawerButtons extends StatelessWidget {
                 Divider(thickness: .3),
                 Align(
                   alignment: Alignment.bottomLeft,
-                  child: TextButton(
-                    style: TextButton.styleFrom(),
-                    onPressed: () {
-                      switch (index) {
-                        case 0:
-                        case 1:
-                        case 2:
-                        case 3:
-                        case 4:
-                      }
-                    },
-                    child: Text(
-                      buttons[index],
-                      style: GoogleFonts.poppins(color: indexes.mvDrawerIndex.value == index ? bgColor2 : Colors.black)
+                  child: Obx(
+                    () => TextButton(
+                      style: TextButton.styleFrom(),
+                      onPressed: () {
+                        indexes.mvDrawerIndex.value = index;
+                        switch (index) {
+                          case 0: 
+                          case 1:
+                          case 2:
+                          case 3:
+                          case 4:
+                        }
+                      },
+                      child: Text(buttons[index],
+                          style: GoogleFonts.poppins(
+                              color: indexes.mvDrawerIndex.value == index
+                                  ? bgColor2
+                                  : Colors.black)),
                     ),
                   ),
                 ),
@@ -53,7 +57,7 @@ class DrawerButtons extends StatelessWidget {
         sizedBox(30, 0),
         InkWell(
           onTap: () {
-            // Student reference Box 
+            // Student reference Box
             studentProviderShowdialog(context);
           },
           child: Container(

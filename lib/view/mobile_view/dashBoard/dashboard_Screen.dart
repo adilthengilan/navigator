@@ -20,9 +20,9 @@ class _MVDashBoardState extends State<MVDashBoard> {
   @override
   Widget build(BuildContext context) {
     final Indexes indexes = Get.put(Indexes()); // Instantiate CounterController
-
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+    
     return Scaffold(
       backgroundColor: bgColor1,
       resizeToAvoidBottomInset: true,
