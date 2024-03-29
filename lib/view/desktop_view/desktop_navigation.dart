@@ -7,7 +7,6 @@ import 'package:navigator_portal/model/widgets/constant.dart';
 import 'package:navigator_portal/view/desktop_view/agentProviders/addStudentsDetails.dart';
 import 'package:navigator_portal/view/desktop_view/contacts/contact.dart';
 import 'package:navigator_portal/view/desktop_view/home/desktop_homes.dart';
-import 'package:navigator_portal/view/mobile_view/registration_page/login_page.dart';
 
 class DesktopView extends StatefulWidget {
   const DesktopView({super.key});
@@ -30,13 +29,7 @@ class _HomePageState extends State<DesktopView> {
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 255, 255, 255),
-          leading: Container(
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/images/Logo.png'))),
-            width: 100,
-            height: 100,
-          ),
+          leading: Image(image: AssetImage('assets/images/logobluetext.png')),
           actions: [
             SizedBox(height: 30, child: AppBarButtons()),
             sizedBox(0, width * 0.10),

@@ -5,18 +5,18 @@ final HomeSubHeadingText =
 
 final HomeSubHeading1 = 'Our Partnered Institutions';
 
-final HomeSubHeading2 = 'Discover the Perfect\n      Course for You';
+final HomeSubHeading2 = 'Discover the Perfect\n    Program for You';
 
-const List<String> ProvidingServices = [
-    "Admission Guidance",
-    "Seat Reservation",
-    "Courses",
-    "Collages",
-    "Diploma",
-    "Study Materials",
-    "Skill Up Courses",
-    "Intership Assistance",
-    "Placement Assistance",
-    "Accommodation",
-    "Loan Assistance",
-  ];
+const List<String> Providing_Programs = [
+  'Skill up Cources',
+  'Soft Skills',
+  'Internship Assistance',
+  'Career Guidance',
+];
+
+const List<String> programs_Image = [
+  'assets/images/personal.png',
+  'assets/images/for_school_students.png',
+  'assets/images/internship (1).png',
+  'assets/images/internship (2).png',
+];

@@ -30,7 +30,7 @@ class _MvCourseState extends State<MvCourse> {
           padding: EdgeInsets.symmetric(vertical: 10),
           physics: NeverScrollableScrollPhysics(),
           scrollDirection: Axis.vertical,
-          itemCount: 11,
+          itemCount: Providing_Programs.length,
           shrinkWrap: true,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 1,
@@ -81,7 +81,7 @@ class _MvCourseState extends State<MvCourse> {
           ),
           sizedBox(10, 0),
           Text(
-            ProvidingServices[index],
+            Providing_Programs[index],
             style:
                 GoogleFonts.poppins(fontSize: 22, fontWeight: FontWeight.w600),
           ),

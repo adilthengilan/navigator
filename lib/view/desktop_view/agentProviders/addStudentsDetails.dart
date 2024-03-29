@@ -105,14 +105,17 @@ class _StudentsAddingState extends State<StudentsAdding> {
                                 StudentNumber.text.isEmpty ||
                                 StudentCourse.text.isEmpty) {
                             } else {
-                              final data = {
-                                'Name': StudentName.text,
-                                'PhoneNo': StudentNumber.text,
-                                'Course': StudentCourse.text
-                              };
-                              setState(() {
-                                StudentDetails.add(data);
-                              });
+                              // final data = {
+                              //   'Name': StudentName.text,
+                              //   'PhoneNo': StudentNumber.text,
+                              //   'Course': StudentCourse.text
+                              // };
+                              // setState(() {
+                              //   StudentDetails.add(data);
+                              // });
+                              SaveStudentsDetails(StudentName.text,
+                                  StudentCourse.text, StudentNumber.text);
+                              setState(() {});
                             }
                           },
                           child: Text(
@@ -185,12 +188,14 @@ class StudentsDetails extends StatelessWidget {
 
 void createFieldinFirebase() async {
   final collection = FirebaseFirestore.instance.collection('StudentsDetails');
-  collection.doc().set({
-    'Name': [
-      {
-        'Course': 'Bca',
-        'Number': 'Number',
-      }
-    ]
-  });
+  collection.doc('navigatrr%acnts').set({'Student': []});
+}
+
+void SaveStudentsDetails(String Name, String Course, String PhoneNo) async {
+  final collection = FirebaseFirestore.instance
+      .collection('StudentsDetails')
+      .doc('navigatrr%acnts');
+      
+  collection.update({});
+
 }
