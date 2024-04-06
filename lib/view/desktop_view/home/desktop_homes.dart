@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:navigator_portal/model/widgets/constant.dart';
 import 'package:navigator_portal/model/widgets/texts.dart';
+
+import 'package:navigator_portal/view/desktop_view/home/cources_list.dart';
 import 'package:navigator_portal/view/desktop_view/home/image_widgets.dart';
-import 'package:navigator_portal/view/desktop_view/widgets/list_widgets.dart';
 
 class Home extends StatefulWidget {
   final double height;
@@ -64,8 +65,7 @@ class _HomeState extends State<Home> {
                   ),
                   sizedBox(20, 0),
                   Padding(
-                      padding:
-                          EdgeInsets.only(left: widget.width * 0.15, top: 10),
+                      padding: EdgeInsets.only(top: 10),
                       child: Container(
                         height: widget.height * 0.06,
                         width: widget.width * 0.15,
@@ -122,7 +122,7 @@ class _HomeState extends State<Home> {
                     fontSize: 40, fontWeight: FontWeight.w700),
               ),
               sizedBox(100, 0),
-              SizedBox(height: widget.height * 0.7, child: Cources()),
+              SizedBox(width: double.infinity, child: Cources()),
               sizedBox(widget.height * 0.05, 0)
             ],
             crossAxisAlignment: CrossAxisAlignment.center,
