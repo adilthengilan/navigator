@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:navigator_portal/controller/indexController/indexController.dart';
 import 'package:navigator_portal/model/widgets/colors.dart';
-import 'package:navigator_portal/model/widgets/constant.dart';
 import 'package:navigator_portal/view/mobile_view/Contact/contact.dart';
 import 'package:navigator_portal/view/mobile_view/DashBoard/Widgets/Drawer/navigation_drawer.dart';
 import 'package:navigator_portal/view/mobile_view/Home/home%20_screen.dart';
@@ -22,12 +21,12 @@ class _MVDashBoardState extends State<MVDashBoard> {
     final Indexes indexes = Get.put(Indexes()); // Instantiate CounterController
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
-    
+
     return Scaffold(
-      backgroundColor: bgColor1,
+      // backgroundColor: bgColor1,
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: Colors.white,
         leading: Image(image: AssetImage("assets/images/logobluetext.png")),
         leadingWidth: 150,
         actions: [
@@ -46,7 +45,7 @@ class _MVDashBoardState extends State<MVDashBoard> {
       ),
       drawer: MvDrawer(width: width, height: height),
       body: SingleChildScrollView(
-        // controller: _scrollController,
+        controller: _scrollController,
         child: Stack(
           children: [
             Container(
@@ -59,7 +58,6 @@ class _MVDashBoardState extends State<MVDashBoard> {
               child: Column(
                 children: [
                   MvHome(height: height, width: width),
-                  sizedBox(20, 0),
                   MvContact(height: height, width: width)
                 ],
               ),
@@ -78,7 +76,6 @@ class _MVDashBoardState extends State<MVDashBoard> {
             curve: Curves.linear,
           );
         },
-        tooltip: 'Scroll to Bottom',
         child: Icon(Icons.arrow_upward),
       ),
     );

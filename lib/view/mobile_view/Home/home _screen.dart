@@ -75,8 +75,10 @@ class _MvHomeState extends State<MvHome> {
               ),
             ],
           ),
-        ),
-        sizedBox(80, 0),
+        ),        
+        sizedBox(60, 0),
+        Image_Container_for_MobileView(widget.height),
+        sizedBox(60, 0),
         Center(
           child: Container(
             height: 40,
@@ -93,9 +95,7 @@ class _MvHomeState extends State<MvHome> {
             ),
           ),
         ),
-        sizedBox(80, 0),
-        Image_Container_for_MobileView(widget.height),
-        sizedBox(80, 0),
+        sizedBox(60, 0),
         Container(
           // Curved Behavior Box
           width: double.infinity,
@@ -109,10 +109,14 @@ class _MvHomeState extends State<MvHome> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               sizedBox(widget.height * .12, 0),
-              Text(
-                HomeSubHeading1,
-                style: GoogleFonts.poppins(
-                    fontSize: 22, fontWeight: FontWeight.w700),
+              SizedBox(
+                width: widget.width / 1.5,
+                child: Text(
+                  HomeSubHeading1,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.poppins(
+                      fontSize: 24, fontWeight: FontWeight.w700),
+                ),
               ),
               sizedBox(80, 0),
               SizedBox(

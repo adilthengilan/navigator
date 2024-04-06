@@ -25,7 +25,7 @@ class _MvCourseState extends State<MvCourse> {
           HomeSubHeading2,
           style: GoogleFonts.poppins(fontSize: 24, fontWeight: FontWeight.w700),
         ),
-        sizedBox(100, 0),
+        sizedBox(80, 0),
         GridView.builder(
           padding: EdgeInsets.symmetric(vertical: 10),
           physics: NeverScrollableScrollPhysics(),
@@ -35,14 +35,15 @@ class _MvCourseState extends State<MvCourse> {
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 1,
               mainAxisSpacing: 80,
-              childAspectRatio: widget.width * 2 / widget.height * 1),
+              childAspectRatio: widget.width * 2 / widget.height * .85),
           itemBuilder: (context, index) {
-            return Container(
-              width: widget.width * .5,
-              height: widget.height / 4,
-              margin: EdgeInsets.symmetric(horizontal: 20),
-              decoration: decorations_of_the_Container(),
-              child: inner_part_of_the_Containers(index),
+            return InkWell(
+              onTap: (){},
+              child: Container(
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                decoration: decorations_of_the_Container,
+                child: inner_part_of_the_Containers(index),
+              ),
             );
           },
         ),
@@ -50,8 +51,7 @@ class _MvCourseState extends State<MvCourse> {
     );
   }
 
-  BoxDecoration decorations_of_the_Container() {
-    return BoxDecoration(
+  final decorations_of_the_Container = BoxDecoration(
       borderRadius: BorderRadius.circular(10),
       color: Colors.white,
       boxShadow: [
@@ -64,7 +64,6 @@ class _MvCourseState extends State<MvCourse> {
         )
       ],
     );
-  }
 
   Padding inner_part_of_the_Containers(int index) {
     return Padding(
@@ -75,8 +74,7 @@ class _MvCourseState extends State<MvCourse> {
           Image(
             height: widget.height / 3.4,
             width: widget.width,
-            image: AssetImage(
-                "assets/images/Create a image  013b7cc9-68ad-4838-9360-f9acb6387489.png"),
+            image: AssetImage("assets/images/Create a image  013b7cc9-68ad-4838-9360-f9acb6387489.png"),
             fit: BoxFit.cover,
           ),
           sizedBox(10, 0),
@@ -86,10 +84,8 @@ class _MvCourseState extends State<MvCourse> {
                 GoogleFonts.poppins(fontSize: 22, fontWeight: FontWeight.w600),
           ),
           sizedBox(10, 0),
-          Text(
-            "this is an Start up consultancy, its supporting to which students would like study in out of country or state",
-            style:
-                GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400),
+          Text("this is an Start up consultancy, its supporting to which students would like study in out of country or state",
+            style: GoogleFonts.poppins(fontSize: 16, fontWeight: FontWeight.w400),
           ),
         ],
       ),
