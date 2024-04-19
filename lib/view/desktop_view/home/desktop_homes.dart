@@ -22,31 +22,59 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        sizedBox(100, 0),
+        sizedBox(90, 0),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              Container(
-                height: widget.height * 0.50,
-                decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 154, 154, 154),
-                    borderRadius: BorderRadius.circular(40)),
-              ),
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding:
-                        EdgeInsets.only(left: widget.width * 0.15, top: 10),
-                    child: SizedBox(
-                      width: widget.width * 0.55,
-                      child: Text(
-                        HomeHeadingText,
-                        style: GoogleFonts.poppins(
-                            fontSize: 60,
-                            color: const Color.fromARGB(255, 0, 0, 0),
-                            fontWeight: FontWeight.w700),
-                      ),
+                  ///////////////// The container of Enroll Now//////////////////
+                  Container(
+                    margin: EdgeInsets.only(
+                        top: widget.height * 0.05, left: widget.width * 0.15),
+                    width: widget.width * 0.37,
+                    height: widget.height * 0.08,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Color.fromARGB(255, 106, 71, 152)),
+                        borderRadius: BorderRadius.circular(40)),
+                    child: Row(
+                      children: [
+                        sizedBox(0, 15),
+                        Container(
+                          height: 40,
+                          width: 200,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Color.fromARGB(255, 106, 71, 152)),
+                          child: Center(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Enroll Now   ',
+                                  style: GoogleFonts.poppins(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w300),
+                                ),
+                                Icon(
+                                  Icons.arrow_right_alt_sharp,
+                                  color: Colors.white,
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        sizedBox(0, 30),
+                        Text(
+                          'EXPLORE YOUR INTERESTS by NAVIGATRR',
+                          style: GoogleFonts.poppins(
+                              color: Color.fromARGB(255, 106, 71, 152)),
+                        )
+                      ],
                     ),
                   ),
                   Padding(
@@ -55,9 +83,23 @@ class _HomeState extends State<Home> {
                     child: SizedBox(
                       width: widget.width * 0.55,
                       child: Text(
+                        HomeHeadingText,
+                        style: GoogleFonts.poppins(
+                            fontSize: 50,
+                            color: const Color.fromARGB(255, 0, 0, 0),
+                            fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsets.only(left: widget.width * 0.15, top: 20),
+                    child: SizedBox(
+                      width: widget.width * 0.55,
+                      child: Text(
                         HomeSubHeadingText,
                         style: GoogleFonts.poppins(
-                            fontSize: 25,
+                            fontSize: 20,
                             color: const Color.fromARGB(255, 0, 0, 0),
                             fontWeight: FontWeight.w700),
                       ),

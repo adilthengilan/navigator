@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:navigator_portal/controller/indexController/indexController.dart';
-import 'package:navigator_portal/model/widgets/colors.dart';
 import 'package:navigator_portal/model/widgets/constant.dart';
-import 'package:navigator_portal/view/desktop_view/agentProviders/addStudentsDetails.dart';
-import 'package:navigator_portal/view/desktop_view/contacts/contact.dart';
+import 'package:navigator_portal/view/desktop_view/home_dashboard/navigation_dashboard.dart';
 import 'package:navigator_portal/view/desktop_view/home/desktop_homes.dart';
 
 class DesktopView extends StatefulWidget {
@@ -28,9 +26,14 @@ class _HomePageState extends State<DesktopView> {
       backgroundColor: Colors.white,
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
+          elevation: 0,
+          toolbarHeight: 100,
           backgroundColor: Color.fromARGB(255, 255, 255, 255),
-          leading: Image(image: AssetImage('assets/images/logobluetext.png')),
           actions: [
+            Padding(
+              padding: EdgeInsets.only(right: width * 0.2),
+              child: Image.asset('assets/images/logobluetext.png'),
+            ),
             SizedBox(height: 30, child: AppBarButtons()),
             sizedBox(0, width * 0.10),
             InkWell(
@@ -39,7 +42,7 @@ class _HomePageState extends State<DesktopView> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => StudentsAdding(),
+                      builder: (context) => Navigation_dashBoard(),
                     ));
               },
               child: Container(
@@ -50,7 +53,7 @@ class _HomePageState extends State<DesktopView> {
                     borderRadius: BorderRadius.circular(30)),
                 child: Center(
                   child: Text(
-                    'Providers',
+                    'Login/Signup',
                     style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w500, color: Colors.white),
                   ),
@@ -58,31 +61,20 @@ class _HomePageState extends State<DesktopView> {
               ),
             ),
             sizedBox(0, width * 0.05),
-            IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.search_rounded,
-                  color: Color.fromARGB(255, 91, 67, 129),
-                ))
           ]),
       body: SingleChildScrollView(
         controller: _scrollController,
-        child: Stack(children: [
-          Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [bgColor1, bgColor2],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight)),
-              child: Column(
-                children: [
-                  Home(height: height, width: width),
-                  sizedBox(height * 0.10, 0),
-                  Contact()
-                ],
-              )),
-        ]),
+        child: Container(
+            width: double.infinity,
+            decoration: BoxDecoration(color: Colors.white),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Home(height: height, width: width),
+                sizedBox(height * 0.2, 0),
+                // get_in_Touch()
+              ],
+            )),
       ),
       floatingActionButton: FloatingActionButton(
         shape: CircleBorder(),
@@ -157,7 +149,7 @@ class _HomePageState extends State<DesktopView> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => StudentsAdding(),
+              builder: (context) => Navigation_dashBoard(),
             ));
       } else {}
     }

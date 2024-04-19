@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navigator_portal/view/desktop_view/home_dashboard/navigation_dashboard.dart';
 import 'package:navigator_portal/view/desktop_view/desktop_navigation.dart';
 import 'package:navigator_portal/view/mobile_view/mobile_view.dart';
 import 'package:navigator_portal/view/responsive_layout.dart';
@@ -16,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ResponsiveLayout(
-          DesktopView: DesktopView(),
+          DesktopView: Navigation_dashBoard(),
           MobileViews: MobileView(),
           TabView: TabView()),
     );
