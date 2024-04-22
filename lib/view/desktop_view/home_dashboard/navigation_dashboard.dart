@@ -53,8 +53,8 @@ class _Navigation_dashBoardState extends State<Navigation_dashBoard> {
                   ),
                   Text('Powered by'),
                   SizedBox(
-                      height: 50,
-                      width: 100,
+                      height: Height * 0.05,
+                      width: Width * 0.1,
                       child: Image(
                           image: AssetImage('assets/images/logobluetext.png'))),
                   sizedBox(20, 0),
@@ -65,8 +65,7 @@ class _Navigation_dashBoardState extends State<Navigation_dashBoard> {
                   sizedBox(10, 0),
                   Container(
                     width: 300,
-                    height: 200,
-                    child: navigationList(),
+                    child: navigationList(Width),
                   )
                 ],
               )),
@@ -105,19 +104,22 @@ class _Navigation_dashBoardState extends State<Navigation_dashBoard> {
                                   style: GoogleFonts.poppins(
                                       color: Colors.black,
                                       fontWeight: FontWeight.w600,
-                                      fontSize: 25),
+                                      fontSize: Width * 0.02),
                                 ),
                               ),
                             ],
                           ),
                         ),
-                        sizedBox(0, Width / 5),
-                        Text(
-                          'Mr, Adil Thengilan',
-                          style: GoogleFonts.poppins(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 18),
+                        sizedBox(0, Width / 6),
+                        SizedBox(
+                          width: Width / 7,
+                          child: Text(
+                            'Mr, Adil Thengilan',
+                            style: GoogleFonts.poppins(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w500,
+                                fontSize: Width * 0.015),
+                          ),
                         ),
                         sizedBox(0, 10),
                         CircleAvatar(
@@ -144,12 +146,13 @@ class _Navigation_dashBoardState extends State<Navigation_dashBoard> {
   }
 }
 
-Widget navigationList() {
+Widget navigationList(width) {
   final NavigationBarController indexes =
       Get.put(NavigationBarController()) // Instantiate CounterController
       ;
   return ListView.builder(
     shrinkWrap: true,
+    itemCount: navigationButtons.length,
     itemBuilder: (context, index) {
       return InkWell(
         onTap: () {
@@ -185,7 +188,7 @@ Widget navigationList() {
                   Text(
                     '${navigationButtons[index]}',
                     style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w600, fontSize: 15),
+                        fontWeight: FontWeight.w600, fontSize: width * 0.01),
                   ),
                 ],
               ),
