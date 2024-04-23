@@ -40,6 +40,7 @@ dependencies:
   carousel_slider: ^4.2.1
   firebase_core: ^2.24.2
   cloud_firestore: ^4.14.0
+  youtube_player_iframe: ^4.0.4
 
 dev_dependencies:
   flutter_test:
