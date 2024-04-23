@@ -40,7 +40,7 @@ class Cources_Screen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.only(top: 20, left: 20),
             child: Text(
-              'Soft Skill Cources',
+              'Soft Skill Training',
               style: GoogleFonts.poppins(
                   fontSize: width * 0.018, fontWeight: FontWeight.w600),
             ),
