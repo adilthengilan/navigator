@@ -39,10 +39,10 @@ class _MVDashBoardState extends State<MVDashBoard> {
         ),
         actions: [
           Text(
-            "Hi,Naheel J",
+            "Hi, Naheel J",
             style: GoogleFonts.poppins(
               textStyle: TextStyle(
-                fontSize: width * 0.03,
+                fontSize: width * 0.038,
                 fontWeight: FontWeight.w600,
                 color: Colors.black,
               ),
@@ -61,15 +61,19 @@ class _MVDashBoardState extends State<MVDashBoard> {
         children: [
           Container(
             margin: EdgeInsets.only(
-                top: height * 0.01, left: width * 0.03, right: width * 0.03),
+              top: height * 0.01,
+              left: width * 0.03,
+              right: width * 0.03,
+            ),
             width: width,
-            height: height * 0.06,
+            height: height * 0.05,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: Color.fromARGB(255, 236, 236, 236)),
+              borderRadius: BorderRadius.circular(10),
+              color: Color.fromARGB(255, 236, 236, 236),
+            ),
             child: TextField(
               decoration: InputDecoration(
-                contentPadding: EdgeInsets.only(top: height * 0.0075),
+                contentPadding: EdgeInsets.only(top: height * 0.003),
                 border: InputBorder.none,
                 hintText: 'Search the new things...',
                 hintStyle: GoogleFonts.poppins(fontSize: width * 0.04),
@@ -77,9 +81,12 @@ class _MVDashBoardState extends State<MVDashBoard> {
                 suffix: TextButton(
                   style: TextButton.styleFrom(),
                   onPressed: () {},
-                  child: Text("Search",
-                      style: GoogleFonts.poppins(
-                          textStyle: TextStyle(fontSize: width * 0.04))),
+                  child: Text(
+                    "Search",
+                    style: GoogleFonts.poppins(
+                      textStyle: TextStyle(fontSize: width * 0.04),
+                    ),
+                  ),
                 ),
               ),
             ),
