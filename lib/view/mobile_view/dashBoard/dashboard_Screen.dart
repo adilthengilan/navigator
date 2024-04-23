@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:navigator_portal/controller/indexController/indexController.dart';
-import 'package:navigator_portal/model/widgets/colors.dart';
-import 'package:navigator_portal/view/mobile_view/Contact/contact.dart';
+import 'package:navigator_portal/model/widgets/constant.dart';
+import 'package:navigator_portal/view/desktop_view/home_dashboard/navigation_dashboard.dart';
 import 'package:navigator_portal/view/mobile_view/DashBoard/Widgets/Drawer/navigation_drawer.dart';
-import 'package:navigator_portal/view/mobile_view/Home/home%20_screen.dart';
 
 class MVDashBoard extends StatefulWidget {
   const MVDashBoard({super.key});
@@ -14,8 +14,6 @@ class MVDashBoard extends StatefulWidget {
 }
 
 class _MVDashBoardState extends State<MVDashBoard> {
-  final ScrollController _scrollController = ScrollController();
-
   @override
   Widget build(BuildContext context) {
     final Indexes indexes = Get.put(Indexes()); // Instantiate CounterController
@@ -23,60 +21,70 @@ class _MVDashBoardState extends State<MVDashBoard> {
     final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      // backgroundColor: bgColor1,
+      backgroundColor: Colors.white,
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        leading: Image(image: AssetImage("assets/images/logobluetext.png")),
-        leadingWidth: 150,
+        elevation: 0.8,
+        title: Obx(
+          () => Text(
+            navigationButtons[indexes.mvDrawerIndex.value],
+            style: GoogleFonts.poppins(
+              textStyle: TextStyle(
+                fontSize: width * 0.04,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+        ),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.search_outlined)),
-          Builder(
-            builder: (context) {
-              return IconButton(
-                onPressed: () {
-                  Scaffold.of(context).openDrawer();
-                },
-                icon: Icon(Icons.menu),
-              );
-            },
-          )
+          Text(
+            "Hi,Naheel J",
+            style: GoogleFonts.poppins(
+              textStyle: TextStyle(
+                fontSize: width * 0.03,
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+              ),
+            ),
+          ),
+          sizedBox(0, 10),
+          CircleAvatar(
+            radius: width * 0.040,
+            foregroundImage: AssetImage("assets/images/personal.png"),
+          ),
+          sizedBox(0, 10),
         ],
       ),
       drawer: MvDrawer(width: width, height: height),
-      body: SingleChildScrollView(
-        controller: _scrollController,
-        child: Stack(
-          children: [
-            Container(
-              width: width,
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [bgColor1, bgColor2],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight)),
-              child: Column(
-                children: [
-                  MvHome(height: height, width: width),
-                  MvContact(height: height, width: width)
-                ],
+      body: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.only(
+                top: height * 0.01, left: width * 0.03, right: width * 0.03),
+            width: width,
+            height: height * 0.06,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Color.fromARGB(255, 236, 236, 236)),
+            child: TextField(
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.only(top: height * 0.0075),
+                border: InputBorder.none,
+                hintText: 'Search the new things...',
+                hintStyle: GoogleFonts.poppins(fontSize: width * 0.04),
+                prefixIcon: Icon(Icons.search),
+                suffix: TextButton(
+                  style: TextButton.styleFrom(),
+                  onPressed: () {},
+                  child: Text("Search",
+                      style: GoogleFonts.poppins(
+                          textStyle: TextStyle(fontSize: width * 0.04))),
+                ),
               ),
             ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        mini: true,
-        shape: CircleBorder(),
-        onPressed: () {
-          // Scroll to the bottom //
-          _scrollController.animateTo(
-            _scrollController.position.minScrollExtent,
-            duration: Duration(milliseconds: 400),
-            curve: Curves.linear,
-          );
-        },
-        child: Icon(Icons.arrow_upward),
+          ),
+        ],
       ),
     );
   }

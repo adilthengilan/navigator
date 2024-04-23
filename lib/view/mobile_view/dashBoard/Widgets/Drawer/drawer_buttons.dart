@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:navigator_portal/controller/indexController/indexController.dart';
-import 'package:navigator_portal/model/widgets/colors.dart';
 import 'package:navigator_portal/model/widgets/constant.dart';
-import 'package:navigator_portal/view/mobile_view/dashBoard/Widgets/Drawer/student_reference.dart';
+import 'package:navigator_portal/view/desktop_view/home_dashboard/navigation_dashboard.dart';
 
 class DrawerButtons extends StatelessWidget {
   final double width;
@@ -15,68 +14,66 @@ class DrawerButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     final Indexes indexes = Get.put(Indexes()); // Instantiate CounterController
 
-    List<String> buttons = ['Home', 'About', 'Service', 'Blog', 'Contact'];
-
     return Column(
       children: [
         ListView.builder(
           shrinkWrap: true,
           scrollDirection: Axis.vertical,
-          itemCount: buttons.length,
+          itemCount: navigationButtons.length,
           itemBuilder: (context, index) {
             return Column(
               children: [
-                Divider(thickness: .3),
-                Align(
-                  alignment: Alignment.bottomLeft,
-                  child: Obx(
-                    () => TextButton(
-                      style: TextButton.styleFrom(),
-                      onPressed: () {
+                Obx(
+                  () => Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: InkWell(
+                      
+                      borderRadius: BorderRadius.circular(10),
+                      onTap: () {
                         indexes.mvDrawerIndex.value = index;
-                        switch (index) {
-                          case 0: 
-                          case 1:
-                          case 2:
-                          case 3:
-                          case 4:
-                        }
                       },
-                      child: Text(buttons[index],
-                          style: GoogleFonts.poppins(
-                              color: indexes.mvDrawerIndex.value == index
-                                  ? bgColor2
-                                  : Colors.black)),
+                      child: Container(
+                        height: height * 0.062,
+                        width: width / 1.5,
+                        decoration: BoxDecoration(
+                            gradient: indexes.mvDrawerIndex == index
+                                ? RadialGradient(colors: [
+                                    Colors.white,
+                                    Color.fromARGB(255, 158, 151, 255),
+                                  ], radius: 10)
+                                : RadialGradient(
+                                    colors: [Colors.transparent, Colors.transparent]),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              sizedBox(0, 10),
+                              Image(
+                                height: height * 0.085,
+                                width: width * 0.085,
+                                image: AssetImage(
+                                  navigattionButtonsIcon[index],
+                                ),
+                              ),
+                              sizedBox(0, 15),
+                              Text(
+                                navigationButtons[index],
+                                style: GoogleFonts.poppins(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: width * 0.034,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ],
             );
           },
-        ),
-        sizedBox(30, 0),
-        InkWell(
-          onTap: () {
-            // Student reference Box
-            studentProviderShowdialog(context);
-          },
-          child: Container(
-            height: 40,
-            width: width / 2,
-            decoration: BoxDecoration(
-              color: Color.fromARGB(255, 91, 67, 129),
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: Center(
-              child: Text(
-                'Providers',
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ),
         ),
       ],
     );
