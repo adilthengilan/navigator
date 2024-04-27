@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
 
-class MvContact extends StatefulWidget {
+class MvAssistance extends StatelessWidget {
   final double height;
   final double width;
-  const MvContact({
+  const MvAssistance({
     super.key,
     required this.height,
     required this.width,
   });
 
-  @override
-  State<MvContact> createState() => _ContactState();
-}
-
-class _ContactState extends State<MvContact> {
   @override
   Widget build(BuildContext context) {
     return Column(
