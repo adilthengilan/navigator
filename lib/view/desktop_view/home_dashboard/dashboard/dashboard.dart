@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:navigator_portal/controller/indexController/webviewmain_indexController.dart';
 import 'package:navigator_portal/model/widgets/constant.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
+import 'dart:ui';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({super.key});
@@ -19,10 +20,12 @@ class _DashBoardState extends State<DashBoard> {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-    final _youtubecontroller = YoutubePlayerController();
-
+    // final _youtubecontroller = YoutubePlayerController();
+    final sideHeading = GoogleFonts.poppins(
+        fontSize: width * 0.016, fontWeight: FontWeight.w600);
     return SingleChildScrollView(
       child: Column(
+        // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             margin: EdgeInsets.only(top: height * 0.02),
@@ -36,7 +39,8 @@ class _DashBoardState extends State<DashBoard> {
                     contentPadding: EdgeInsets.only(top: 9),
                     border: InputBorder.none,
                     hintText: 'Search the new things...',
-                    hintStyle: GoogleFonts.poppins(fontSize: 16),
+                    hintStyle: GoogleFonts.poppins(
+                        fontSize: 16, fontFeatures: List.empty()),
                     prefixIcon: Icon(Icons.search),
                     suffix: InkWell(
                       onTap: () {},
@@ -71,8 +75,7 @@ class _DashBoardState extends State<DashBoard> {
                     sizedBox(0, 30),
                     Text(
                       'Recent Activity',
-                      style: GoogleFonts.poppins(
-                          fontSize: width * 0.014, fontWeight: FontWeight.w500),
+                      style: sideHeading,
                     ),
                     sizedBox(0, 10),
                     SizedBox(
@@ -89,26 +92,57 @@ class _DashBoardState extends State<DashBoard> {
                   height: height * 0.55,
                   width: width * 1,
                   child: Lists_for_all(
-                      height,
-                      width,
-                      RecentActivityList,
-                      'Cancel',
-                      'Resume',
-                      Icon(Icons.close),
-                      Icon(
-                        Icons.play_arrow,
-                        color: Colors.white,
-                      )),
+                    height,
+                    width,
+                    RecentActivityList,
+                    'Cancel',
+                    'Resume',
+                    Icon(Icons.close),
+                    Icon(
+                      Icons.play_arrow,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
-          sizedBox(30, 0)
+          sizedBox(30, 0),
+          Row(children: [
+            sizedBox(0, width * 0.01),
+            Text(
+              'Latest Tech News',
+              style: sideHeading,
+            ),
+            Icon(
+              Icons.new_releases,
+              color: Colors.red,
+            )
+          ]),
+          SizedBox(
+            height: height * 0.55,
+            width: width * 1,
+            child: Lists_for_all(
+              height,
+              width,
+              latestTechNews,
+              'Review',
+              '   Enroll',
+              Icon(
+                Icons.reviews,
+                size: width * 0.01,
+              ),
+              Icon(
+                Icons.play_arrow,
+                size: width * 0.01,
+                color: Colors.white,
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 }
 
-////////////////////
-///Show List is containing simple navigation to the expected and overreview of the programs like , cource , materials,
+///---------------------------------Show List is containing simple navigation to the expected and overreview of the programs like , cource , materials,
 /// faculties etc...
 Widget showList(width) {
   final NavigationBarController indexes =
@@ -178,7 +212,14 @@ List<dynamic> showList_Content = [
 ];
 
 Widget Lists_for_all(
-    height, width, List, Button1, Button2, Icon icon1, Icon icon2) {
+  height,
+  width,
+  List,
+  Button1,
+  Button2,
+  Icon icon1,
+  Icon icon2,
+) {
   return ListView.builder(
     scrollDirection: Axis.horizontal,
     itemCount: List.length,
@@ -201,18 +242,42 @@ Widget Lists_for_all(
           children: [
             Container(
               margin: EdgeInsets.only(top: 15, left: 15, right: 15),
-              height: height / 2.6,
+              height: height / 3,
               decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('${List[index]['image']}'),
+                      fit: BoxFit.fill),
                   color: Color.fromARGB(255, 255, 255, 255),
                   borderRadius: BorderRadius.circular(5)),
             ),
-            // sizedBox(10, 0),
+            Container(
+              margin: EdgeInsets.only(top: 6),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30), color: Colors.white),
+              height: height * 0.05,
+              width: width * 0.18,
+              child: Center(
+                  child: Text(
+                List[index]['Heading'],
+                style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w500, fontSize: width * 0.01),
+              )),
+            ),
             Row(
               children: [
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    // Button1 == 'Cancel'
+                    //     ? [RecentActivityList.remove(List[index]),
+                    //     RecentActivityListLOgo.remove(ImageList[index])]
+                    //     : SizedBox(); 
+                  },
                   child: Container(
-                    margin: EdgeInsets.all(12),
+                    margin: EdgeInsets.only(
+                      top: 8,
+                      left: width * 0.0095,
+                      right: width * 0.0095,
+                    ),
                     height: height * 0.05,
                     width: width * 0.08,
                     decoration: BoxDecoration(
@@ -224,7 +289,9 @@ Widget Lists_for_all(
                         Text(
                           Button1,
                           style: GoogleFonts.poppins(
-                              color: Colors.black, fontWeight: FontWeight.w500),
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500,
+                              fontSize: width * 0.01),
                         ),
                         sizedBox(0, 5),
                         // Icon(
@@ -237,9 +304,16 @@ Widget Lists_for_all(
                   ),
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    RecentActivityList.contains(List[index])
+                        ? 0
+                        : addtorecent(List[index]);
+                  },
                   child: Container(
-                    margin: EdgeInsets.all(12),
+                    margin: EdgeInsets.only(
+                      top: 8,
+                      left: width * 0.009,
+                    ),
                     height: height * 0.05,
                     width: width * 0.08,
                     decoration: BoxDecoration(
@@ -252,7 +326,9 @@ Widget Lists_for_all(
                         Text(
                           Button2,
                           style: GoogleFonts.poppins(
-                              color: Colors.white, fontWeight: FontWeight.w500),
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                              fontSize: width * 0.01),
                         ),
                         icon2
                       ],
@@ -268,4 +344,20 @@ Widget Lists_for_all(
   );
 }
 
-List<dynamic> RecentActivityList = ['', '', '', ''];
+// ----------------Function for add to recent activtiy ----------------------
+void addtorecent(data) {
+  RecentActivityList.add(data);
+}
+
+//---------------------Recent Activity List here  ------------------------------
+List<dynamic> RecentActivityList = [
+  {'Heading': '', 'image': ''}
+];
+
+// -----------------------Here have the New updates session for everyone ---------------------
+List<dynamic> newUpdates = [''];
+
+// -----------------------------Here have the Latest Tech News session for users --------------------
+List<dynamic> latestTechNews = [
+  {'Heading': '', 'image': ''}
+];

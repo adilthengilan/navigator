@@ -7,7 +7,11 @@ import 'package:navigator_portal/model/widgets/constant.dart';
 import 'package:navigator_portal/view/desktop_view/home_dashboard/Assistance_and_Support/assistance.dart';
 import 'package:navigator_portal/view/desktop_view/home_dashboard/cources/cources_screen.dart';
 import 'package:navigator_portal/view/desktop_view/home_dashboard/dashboard/dashboard.dart';
+import 'package:navigator_portal/view/desktop_view/home_dashboard/freelance/freelance.dart';
 import 'package:navigator_portal/view/desktop_view/home_dashboard/study_materials/study_materials_screen.dart';
+import 'dart:ui';
+
+import 'package:navigator_portal/view/desktop_view/home_dashboard/support/support.dart';
 
 class Navigation_dashBoard extends StatefulWidget {
   const Navigation_dashBoard({super.key});
@@ -204,14 +208,17 @@ List<Widget> screens = [
   DashBoard(),
   Cources_Screen(),
   Study_Materials_Screen(),
-  Assistance_Screen()
+  Assistance_Screen(),
+  Freelances(),
+  Support()
 ];
 
 List<String> navigationButtons = [
   'Dashboard',
-  'Cources',
+  'Courses',
   'StudyMaterials',
   'Assistance',
+  'Freelances',
   'Support',
 ];
 List<String> navigattionButtonsIcon = [
@@ -219,5 +226,6 @@ List<String> navigattionButtonsIcon = [
   'assets/images/cap.png',
   'assets/images/studymaterials.png',
   'assets/images/internship (2).png',
+  'assets/images/freelance-removebg-preview.png',
   'assets/images/internship (1).png',
 ];

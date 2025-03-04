@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:navigator_portal/controller/indexController/webviewmain_indexController.dart';
 
 class ResponsiveLayout extends StatefulWidget {
   final Widget MobileViews;
