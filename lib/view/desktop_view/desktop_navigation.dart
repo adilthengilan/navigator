@@ -5,6 +5,7 @@ import 'package:navigator_portal/controller/indexController/indexController.dart
 import 'package:navigator_portal/model/widgets/constant.dart';
 import 'package:navigator_portal/view/desktop_view/home_dashboard/navigation_dashboard.dart';
 import 'package:navigator_portal/view/desktop_view/home/desktop_homes.dart';
+import 'package:navigator_portal/view/desktop_view/registration/login.dart';
 
 class DesktopView extends StatefulWidget {
   const DesktopView({super.key});
@@ -38,12 +39,12 @@ class _HomePageState extends State<DesktopView> {
             sizedBox(0, width * 0.10),
             InkWell(
               onTap: () {
-                // showDialogueForProviders(context, verify);
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Navigation_dashBoard(),
+                      builder: (context) => LoginPageDesk(),
                     ));
+                // showDialogueForProviders(context, verify);
               },
               child: Container(
                 height: 40,

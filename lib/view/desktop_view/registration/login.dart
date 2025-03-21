@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-class LoginPage extends StatefulWidget {
+class LoginPageDesk extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _LoginPageDeskState createState() => _LoginPageDeskState();
 }
 
-class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMixin {
+class _LoginPageDeskState extends State<LoginPageDesk>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  
+
   // Brand colors
   final Color primaryBlue = Color(0xFF0E3B62);
   final Color accentYellow = Color(0xFFFDCD38);
@@ -43,27 +44,29 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
       SnackBar(content: Text('Logging in with ${_usernameController.text}')),
     );
   }
-  
+
   void _handleGoogleLogin() {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Logging in with Google')),
     );
   }
-  
+
   void _handleFacebookLogin() {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Logging in with Facebook')),
     );
   }
-  
+
   void _handleForgotPassword() {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         title: Text('Reset Password'),
-        content: Text('Password reset link will be sent to ${_usernameController.text}'),
+        content: Text(
+            'Password reset link will be sent to ${_usernameController.text}'),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context), child: Text('Cancel')),
+          TextButton(
+              onPressed: () => Navigator.pop(context), child: Text('Cancel')),
           TextButton(
             onPressed: () {
               Navigator.pop(context);
@@ -81,7 +84,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    
+
     return Scaffold(
       backgroundColor: primaryBlue,
       body: SingleChildScrollView(
@@ -153,9 +156,11 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
           // Login/Sign up tabs
           Row(
             children: [
-              Text('Log In', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              Text('Log In',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               SizedBox(width: 15),
-              Text('Sign Up', style: TextStyle(fontSize: 20, color: Colors.grey)),
+              Text('Sign Up',
+                  style: TextStyle(fontSize: 20, color: Colors.grey)),
             ],
           ),
           SizedBox(height: 30),
@@ -180,7 +185,8 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
           // Forgot Password
           GestureDetector(
             onTap: _handleForgotPassword,
-            child: Text('Forgot Password?', style: TextStyle(color: Colors.grey, fontSize: 14)),
+            child: Text('Forgot Password?',
+                style: TextStyle(color: Colors.grey, fontSize: 14)),
           ),
           SizedBox(height: 30),
 
@@ -190,14 +196,16 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
             height: 50,
             child: ElevatedButton(
               onPressed: _handleLogin,
-              child: Text('Log In', style: TextStyle(fontSize: 16, color: Colors.white)),
+              child: Text('Log In',
+                  style: TextStyle(fontSize: 16, color: Colors.white)),
               style: ElevatedButton.styleFrom(
                 backgroundColor: primaryBlue,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
               ),
             ),
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 10),
 
           // Or text
           Center(child: Text('or', style: TextStyle(color: Colors.grey))),
@@ -219,7 +227,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                 backgroundColor: Colors.grey[200]!,
                 textColor: Colors.black87,
               ),
-              
+
               // Facebook Login
               _buildSocialButton(
                 onTap: _handleFacebookLogin,
@@ -316,7 +324,10 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                 SizedBox(height: 15),
                 Text(
                   "Let's navigate your career",
-                  style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 20),
                 _buildIndicators(),
@@ -327,12 +338,15 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
       ),
     );
   }
-  
+
   // Logo widget
   Widget _buildLogo({required double fontSize}) {
     return RichText(
       text: TextSpan(
-        style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.bold, letterSpacing: 1.2),
+        style: TextStyle(
+            fontSize: fontSize,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 1.2),
         children: [
           TextSpan(text: 'navigat', style: TextStyle(color: Colors.black)),
           TextSpan(text: 'rr', style: TextStyle(color: accentYellow)),
@@ -353,7 +367,11 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
               animation: _animationController,
               builder: (context, child) {
                 return Transform.translate(
-                  offset: Offset(0, 5 * math.sin((_animationController.value * 2 * math.pi) + i)),
+                  offset: Offset(
+                      0,
+                      5 *
+                          math.sin(
+                              (_animationController.value * 2 * math.pi) + i)),
                   child: Container(
                     width: 20 + (i * 3),
                     height: 20 + (i * 3),
@@ -424,7 +442,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
                     ],
                   ),
                   SizedBox(height: 20),
-                  
+
                   // Graph
                   Expanded(
                     child: CustomPaint(
@@ -436,7 +454,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
               ),
             ),
           ),
-          
+
           // Monitor stand
           Container(
             width: 50,
@@ -472,7 +490,7 @@ class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMix
 // Simple graph painter
 class GraphPainter extends CustomPainter {
   final Color accentColor;
-  
+
   GraphPainter({required this.accentColor});
 
   @override
@@ -481,7 +499,7 @@ class GraphPainter extends CustomPainter {
       ..color = accentColor.withOpacity(0.9)
       ..strokeWidth = 2.0
       ..style = PaintingStyle.stroke;
-      
+
     final fillPaint = Paint()
       ..shader = LinearGradient(
         colors: [
@@ -492,40 +510,31 @@ class GraphPainter extends CustomPainter {
         end: Alignment.bottomCenter,
       ).createShader(Rect.fromLTWH(0, 0, size.width, size.height))
       ..style = PaintingStyle.fill;
-      
+
     final path = Path();
     final fillPath = Path();
-    
+
     // Starting point
     path.moveTo(0, size.height * 0.8);
     fillPath.moveTo(0, size.height);
     fillPath.lineTo(0, size.height * 0.8);
-    
+
     // Graph points
-    path.cubicTo(
-      size.width * 0.2, size.height * 0.6,
-      size.width * 0.3, size.height * 0.7,
-      size.width * 0.4, size.height * 0.4
-    );
-    
-    path.cubicTo(
-      size.width * 0.5, size.height * 0.2,
-      size.width * 0.7, size.height * 0.35,
-      size.width * 0.8, size.height * 0.3
-    );
-    
-    path.cubicTo(
-      size.width * 0.9, size.height * 0.25,
-      size.width * 0.95, size.height * 0.4,
-      size.width, size.height * 0.5
-    );
-    
+    path.cubicTo(size.width * 0.2, size.height * 0.6, size.width * 0.3,
+        size.height * 0.7, size.width * 0.4, size.height * 0.4);
+
+    path.cubicTo(size.width * 0.5, size.height * 0.2, size.width * 0.7,
+        size.height * 0.35, size.width * 0.8, size.height * 0.3);
+
+    path.cubicTo(size.width * 0.9, size.height * 0.25, size.width * 0.95,
+        size.height * 0.4, size.width, size.height * 0.5);
+
     // Copy the path for fill
     fillPath.addPath(path, Offset.zero);
     fillPath.lineTo(size.width, size.height);
     fillPath.lineTo(0, size.height);
     fillPath.close();
-    
+
     // Draw the fill and then the line
     canvas.drawPath(fillPath, fillPaint);
     canvas.drawPath(path, paint);
@@ -534,4 +543,3 @@ class GraphPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
-
